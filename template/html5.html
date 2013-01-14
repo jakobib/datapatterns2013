@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html$if(lang)$ lang="$lang$"$endif$>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+$for(author-meta)$
+  <meta name="author" content="$author-meta$">
+$endfor$
+$if(date-meta)$
+  <meta name="dcterms.date" content="$date-meta$">
+$endif$
+  <title>$if(title-prefix)$$title-prefix$ - $endif$$if(pagetitle)$$pagetitle$$endif$</title>
+  <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+$if(quotes)$
+  <style type="text/css">
+    q { quotes: "“" "”" "‘" "’"; }
+  </style>
+$endif$
+$if(highlighting-css)$
+  <style type="text/css">
+$highlighting-css$
+  </style>
+$endif$
+$for(css)$
+  <link rel="stylesheet" href="$css$">
+$endfor$
+$if(math)$
+  $math$
+$endif$
+$for(header-includes)$
+  $header-includes$
+$endfor$
+</head>
+<body>
+
+<!-- navbar -->
+  <div class="navbar navbar-inverse navbar-fixed-top">
+	<div class="navbar-inner">
+	  <div class="containter">
+		  <a class="brand" href="/">&#xA0;About data</a>
+		  <ul class="nav">
+		    <li><a href="#">methods</a></li>
+		    <li><a href="#">paradigms</a></li>
+		    <li class="active"><a href="/patterns">patterns</a></li>
+		    <li><a href="/bibliography">bibliography</a></li>
+		  </ul>
+	  </div>
+    </div>
+  </div>
+
+  <div class="container-fluid" style="margin-top:40px">	
+    <div class="row-fluid">
+      <div class="span2" style="margin-top:10px">
+$for(include-before)$
+$include-before$
+$endfor$
+	  </div>
+      <div class="span10">
+
+$if(title)$
+<header>
+<h1 class="title">$title$</h1>
+$for(author)$
+<h2 class="author">$author$</h2>
+$endfor$
+$if(date)$
+<h3 class="date">$date$</h3>
+$endif$
+</header>
+$endif$
+$if(toc)$
+<nav id="$idprefix$TOC">
+$toc$
+</nav>
+$endif$
+$body$
+    </div>
+  </div>
+</div>
+$for(include-after)$
+$include-after$
+$endfor$
+</body>
+</html>

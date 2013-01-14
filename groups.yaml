@@ -1,0 +1,27 @@
+- basic:
+    - label
+    - atomicity
+    - size
+    - optionality 
+    - prohibition
+
+- combining:
+    - sequence
+    - graph 
+    - container
+    - dependence
+    - embedding
+
+- relational:
+    - flag
+    - derivation
+    - encoding
+    - identifier
+    - normalization
+    - schema
+                
+- continuing:
+    - separator
+    - etcetera
+    - garbage
+    - void
