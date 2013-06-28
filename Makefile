@@ -1,4 +1,4 @@
-.PHONY: clean
+.PHONY: clea
 .SUFFIXES: .md .html .tex
 
 HTML_TEMPLATE=template/html5.html
@@ -15,6 +15,9 @@ HTML_TEMPLATE=template/html5.html
 
 html: groups.html $(shell ls *.md | sed s/\.md/.html/)
 
+tex: groups.yaml *.md patterngraph.tex
+	@perl bin/groups2tex.pl
+
 normalize: *.md
 	@perl bin/normalize.pl *.md
 
@@ -22,7 +25,7 @@ clean:
 	@rm -f *.html *.tex patterngraph.* links.csv groups.markdown
 
 groups.markdown: groups.yaml
-	@perl bin/groups.pl > $@
+	@perl bin/groups2md.pl > $@
 	@echo $@
 
 groups.html: groups.markdown
@@ -30,13 +33,15 @@ groups.html: groups.markdown
 		| sed 's/<ul/<ul class="nav nav-list"/'	> $@
 	@echo $@
 
-new: clean html links
+new: clean html links tex
 
 links: links.csv
 
 links.csv: *.md
 	@perl bin/extractlinks.pl > $@
 	@echo $@
+
+patterngraph: patterngraph.png patterngraph.dot patterngraph.svg
 
 patterngraph.png: links.csv
 	@perl bin/patterngraph.pl $@
@@ -50,7 +55,7 @@ patterngraph.dot: links.csv
 	@perl bin/patterngraph.pl $@
 	@echo $@
 
-patterngraph.tex: links.dot
+patterngraph.tex: patterngraph.dot
 	@dot2tex --figonly $< | perl -pe 's/node {([^}]+)}/node {\\pattern{$$1}}/' > $@
 	@echo "$@ needs manual adjustement of scale."
 
