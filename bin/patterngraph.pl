@@ -9,6 +9,7 @@ my %links;
 my %all;
 
 my %patterns = map { $_ => 1 } @ARGV;
+my $href = shift @ARGV;
 
 @ARGV = ('links.csv');
 while (<>) {
@@ -44,7 +45,7 @@ sub add_node {
 		$attr{color} = "#AAAAAAAA";
 	}
 #    $attr{tooltip} = $pat->{idea} // "...";
-    $attr{href} = "#";
+    $attr{href} = "$name.html";#"#";
     $g->add_node($name,%attr);
 }
 
