@@ -4,7 +4,7 @@ This git repository contains a pattern language of data structuring, developed
 as part of my PhD thesis *Describing data patterns* (Voß 2013, not published
 yet). The latest version of the repository can be found at:
 
-<https://github.org/jakobib/datapatterns2013.git>
+<https://github.com/jakobib/datapatterns2013.git>
 
 ## How this repository is organized
 
